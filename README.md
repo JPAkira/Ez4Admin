@@ -16,7 +16,7 @@ Front-End:
 - Javascript
 
 Deploy / DB:
-- Para o deploy utilizei docker
+- Docker
 - Mariadb (mysql) ou PostgreSQL
 - Nginx
 
