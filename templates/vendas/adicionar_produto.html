@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'partials/_menu.html' %}
+<div class="row">
+  <div class="col-9">.col-9</div>
+  <div class="col-4">.col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+  <div class="col-6"><br></div>
+</div>
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Caixa Aberto">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Página 2</title>
+    <link rel="stylesheet" href="{% static 'assets/css/nicepage.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'assets/css/pagetwo.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static 'assets/js/nicepage.js' %}" defer=""></script>
+    <meta name="generator" content="Nicepage 3.6.6, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+
+
+
+
+
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"url": "index.html"
+}</script>
+    <meta property="og:title" content="Página 2">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+  </head>
+  <body class="u-body">
+    <section class="u-align-center u-clearfix u-gradient u-section-1" id="sec-7755">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-border-1 u-border-palette-4-light-3 u-container-style u-custom-color-2 u-group u-radius-19 u-shape-round u-group-1">
+          <div class="u-container-layout u-valign-middle u-container-layout-1">
+            <h2 class="u-align-center u-text u-text-white u-text-1">Caixa Aberto</h2>
+          </div>
+        </div>
+        {% include 'partials/_alertas.html' %}
+        <h3 class="u-text u-text-2">Adicionar Produto</h3>
+        <h3 class="u-align-center u-text u-text-3">Lista de produtos</h3>
+      </div>
+    </section>
+    <section class="u-clearfix u-palette-5-light-3 u-section-2" id="sec-0c22">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-table u-table-responsive u-table-1">
+          <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table class="u-table-entity">
+            <colgroup>
+              <col width="35.8%">
+              <col width="20.2%">
+              <col width="18%">
+              <col width="26%">
+            </colgroup>
+            <thead class="u-custom-color-2 u-table-header u-table-header-1">
+              <tr style="height: 30px;">
+                <th class="u-border-1 u-border-black u-table-cell">Produto</th>
+                <th class="u-border-1 u-border-black u-table-cell">Preço</th>
+                <th class="u-border-1 u-border-black u-table-cell">Quantidade</th>
+                <th class="u-border-1 u-border-black u-table-cell">Total</th>
+                <th class="u-border-1 u-border-black u-table-cell">Funções</th>
+              </tr>
+            </thead>
+            <tbody class="u-table-body">
+            {% if produtos %}
+            {% for produto in produtos %}
+              <tr style="height: 30px;">
+                <td class="u-border-1 u-border-grey-30 u-table-cell u-table-cell-5">{{produto.produto_id.nome}} {{produto.produto_id.tamanho}}</td>
+                <td class="u-border-1 u-border-grey-30 u-table-cell u-table-cell-6">R$ {{produto.produto_id.preco}}</td>
+                <td class="u-border-1 u-border-grey-30 u-table-cell u-table-cell-7">{{produto.quantidade}}</td>
+                <td class="u-border-1 u-border-grey-30 u-table-cell u-table-cell-8">R$ {{produto.total}}</td>
+                <td class="u-border-1 u-border-grey-30 u-table-cell u-table-cell-8"><a href = "{% url 'deletar_produto_venda' produto.id %}">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{ cliente.id }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                  </svg>
+                </button>
+                </a></td>
+              </tr>
+              {% endfor %}
+              {% else %}
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+        </div>
+        <div class="d-grid gap-3">
+        <div class="p-2 bg-light border"><p></p></div>
+        </div>
+        <div class="u-form u-form-1">
+          <form action="{% url 'salvar_produto' %}" method="POST" class="u-clearfix u-form-custom-backend u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 15px;" source="custom" name="form">
+            {% csrf_token %}
+            <input type="hidden" value="{{ venda.id }}" name="venda_id" id="venda_id">
+            <input type="hidden" value="{{ cliente.id }}" name="cliente_id" id="cliente_id">
+            <div class="u-form-group u-form-name">
+              <label for="name-6797" class="u-form-control-hidden u-label">Codigo</label>
+              <input type="text" placeholder="Codigo de barras" id="name-6797" name="codigo" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-6 u-input-1" required="" autofocus="autofocus">
+            </div>
+            <div class="u-form-group">
+              <label for="email-6797" class="u-form-control-hidden u-label">Quantidade</label>
+              <input placeholder="Quantidade" id="email-6797" name="quantidade" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-6 u-input-2" type="number" value="1" min="1" required>
+            </div>
+            <div class="u-align-left u-form-group u-form-submit">
+              <a href="#" class="u-btn u-btn-submit u-button-style u-custom-color-2 u-hover-custom-color-2 u-btn-1">ADICIONAR<br>
+              </a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-palette-5-light-3 u-section-3" id="sec-150e">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <img src="{% static 'assets/img/logo_transparent.png' %}" alt="" class="u-image u-image-default u-preserve-proportions u-image-1" data-image-width="1200" data-image-height="1200">
+        <h3 class="u-align-center u-text u-text-1">Sub Total</h3>
+        <div class="u-border-2 u-border-grey-dark-1 u-container-style u-group u-radius-10 u-shape-round u-group-1">
+          <div class="u-container-layout u-container-layout-1"></div>
+        </div>
+        <h4 class="u-align-center u-text u-text-palette-5-dark-3 u-text-2">R$ {{venda.valor_total}}</h4>
+        <h3 class="u-align-center u-text u-text-3">Troco</h3>
+        <h3 class="u-align-center u-text u-text-4">Total Recebido</h3>
+        <div class="u-border-2 u-border-grey-dark-1 u-radius-10 u-shape u-shape-round u-shape-1"></div>
+        <div class="u-border-2 u-border-grey-dark-1 u-radius-10 u-shape u-shape-round u-shape-2"></div>
+        <h4 class="u-align-center u-text u-text-palette-5-dark-3 u-text-5">R$ 0</h4>
+        <h4 class="u-align-center u-text u-text-palette-5-dark-3 u-text-6">R$ 0</h4>
+      </div>
+    </section>
+    <section class="u-clearfix u-palette-5-light-3 u-section-4" id="sec-06e4">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <a href="{% url 'finalizar_venda' venda.id %}" class="u-active-none u-btn u-button-style u-hover-none u-none u-text-custom-color-2 u-text-hover-palette-2-base u-btn-1"><span class="u-icon u-text-palette-2-base"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 511.334 511.334" style="width: 1em; height: 1em;"><path d="m506.887 114.74c-3.979-5.097-10.086-8.076-16.553-8.076h-399.808l-5.943-66.207c-.972-10.827-10.046-19.123-20.916-19.123h-42.667c-11.598 0-21 9.402-21 21s9.402 21 21 21h23.468l23.018 256.439c.005.302-.01.599.007.903.047.806.152 1.594.286 2.37l.842 9.376c.016.177.034.354.055.529 2.552 22.11 13.851 41.267 30.19 54.21-8.466 10.812-13.532 24.407-13.532 39.172 0 35.106 28.561 63.667 63.666 63.667 35.106 0 63.667-28.561 63.667-63.667 0-7.605-1.345-14.9-3.801-21.667h114.936c-2.457 6.767-3.801 14.062-3.801 21.667 0 35.106 28.561 63.667 63.667 63.667s63.667-28.561 63.667-63.667-28.561-63.667-63.667-63.667h-234.526c-15.952 0-29.853-9.624-35.853-23.646l335.608-19.724c9.162-.538 16.914-6.966 19.141-15.87l42.67-170.67c1.567-6.272.158-12.918-3.821-18.016z"></path></svg><img></span>
+          <span style="font-weight: 700;">&nbsp;Finalizar comprar</span>
+        </a>
+        <a href="{% url 'deleta_venda' venda.id %}" class="u-active-none u-btn u-button-style u-hover-none u-none u-text-custom-color-2 u-text-hover-palette-2-base u-btn-2"><span class="u-icon u-text-palette-2-base"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 511.334 511.334" style="width: 1em; height: 1em;"><path d="m506.887 114.74c-3.979-5.097-10.086-8.076-16.553-8.076h-399.808l-5.943-66.207c-.972-10.827-10.046-19.123-20.916-19.123h-42.667c-11.598 0-21 9.402-21 21s9.402 21 21 21h23.468l23.018 256.439c.005.302-.01.599.007.903.047.806.152 1.594.286 2.37l.842 9.376c.016.177.034.354.055.529 2.552 22.11 13.851 41.267 30.19 54.21-8.466 10.812-13.532 24.407-13.532 39.172 0 35.106 28.561 63.667 63.666 63.667 35.106 0 63.667-28.561 63.667-63.667 0-7.605-1.345-14.9-3.801-21.667h114.936c-2.457 6.767-3.801 14.062-3.801 21.667 0 35.106 28.561 63.667 63.667 63.667s63.667-28.561 63.667-63.667-28.561-63.667-63.667-63.667h-234.526c-15.952 0-29.853-9.624-35.853-23.646l335.608-19.724c9.162-.538 16.914-6.966 19.141-15.87l42.67-170.67c1.567-6.272.158-12.918-3.821-18.016z"></path></svg><img></span><b>&nbsp;Cancelar</b>
+        </a>
+      </div>
+    </section>
+{% endblock %}

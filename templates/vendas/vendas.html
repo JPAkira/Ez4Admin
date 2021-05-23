@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html>
+{% include 'partials/_menu.html' %}
+
+<body>
+    <main class="page pricing-table-page">
+        <section class="clean-block clean-pricing dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Vendas</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
+                                <div class="container">
+                              <form action="{% url 'busca_venda' %}" class="form-inline" method="post">
+                                  {% csrf_token %}
+                                <input class="form-control mr-sm-2" type="search" name="buscar" placeholder="Procurar" aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Procurar</button>
+                              </form>
+                                    <a href = "{% url 'selecionar_cliente' %}"><button type="button" class="btn btn-primary btn-sm">Adicionar Venda</button></a>
+                                </div>
+                            </nav>
+                            <p></p>
+                            {% include 'partials/_alertas.html' %}
+                            <table class="table table-striped">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Cliente</th>
+                                        <th>Volume da compra</th>
+                                        <th>Forma de pagamento</th>
+                                        <th>Valor Pago</th>
+                                        <th>Troco</th>
+                                        <th>Valor Total</th>
+                                        <th>Funções</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   {% if vendas %}
+                                   {% for venda in vendas %}
+                                    <tr>
+                                        <td>{{ venda.cliente }}</td>
+                                        <td>{{ venda.volume_de_compra }} Item(s)</td>
+                                        <td>{{ venda.forma_de_pagamento }}</td>
+                                        <td>R$ {{ venda.valor_pago }}</td>
+                                        <td>R$ {{ venda.troco }}</td>
+                                        <td>R$ {{ venda.valor_total }}</td>
+                                        <td>                                    <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{ venda.id }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                </svg>
+                                            </button>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal{{ venda.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                              <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Você tem certeza que quer apagar a venda?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                      <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                    Não terá como recuperar
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                                      <a href = "{% url 'deleta_venda' venda.id %}"><button type="button" class="btn btn-primary">Apagar</button></a>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <a href = "{% url 'adicionar_produto' venda.id %}">
+                                            <button type="button" class="btn btn-primary">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                                                  <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                                                  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                                </svg>
+                                            </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% else %}
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
+
+
+{% endblock %}

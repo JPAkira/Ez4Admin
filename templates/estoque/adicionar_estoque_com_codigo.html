@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<body>
+    {% include 'partials/_menu.html' %}
+    <main class="page contact-us-page">
+        <section class="clean-block clean-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Adicionar Estoque</h2>
+                    <p></p>
+                </div>
+                <form action="{% url 'adicionar_estoque_com_codigo' %}" method="post">
+                    {% csrf_token %}
+                    <input class="form-control" type="hidden" id="codigo" name="codigo" value="{{ produto.codigo }}">
+                    <div class="form-group"><label>Quantidade</label><input autofocus class="form-control" type="number" id="quantidade" name="quantidade" required min="1" max="1000000"></div>
+                    <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Send</button></div>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+
+{% endblock %}

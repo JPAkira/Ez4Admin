@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<body>
+    {% include 'partials/_menu.html' %}
+    <main class="page contact-us-page">
+        <section class="clean-block clean-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Adicionar Estoque</h2>
+                    <p></p>
+                </div>
+                <form action="{% url 'cria_produto_com_codigo' %}" method="post">
+                    {% csrf_token %}
+                    <input class="form-control" type="hidden" id="codigo" name="codigo" value="{{codigo}}">
+                    <div class="form-group"><label>Nome do produto</label><input class="form-control" type="text" id="nome" name="nome" required minlength="3" maxlength="100"></div>
+                    <div class="form-group"><label>Tipo de Embalagem</label><input class="form-control" type="text" id="embalagem" name="embalagem" required minlength="2" placeholder="ex: Pet" maxlength="50"></div>
+                    <div class="form-group"><label>Tamanho</label><input class="form-control" type="text" id="tamanho" name="tamanho" required minlength="2" placeholder="ex: 310ml" maxlength="20"></div>
+                    <div class="form-group"><label>Quantidade</label><input class="form-control" type="number" id="quantidade" name="quantidade" required min="1" max="1000000"></div>
+                    <div class="form-group"><label>Preço</label><input class="form-control" type="text" id="preco" name="preco" required minlength="2" placeholder="0,00" maxlength="20"></div>
+                    <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Send</button></div>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<html>
+
+<head>
+
+</head>
+
+<body>
+    {% include 'partials/_menu.html' %}
+    <main class="page landing-page">
+        <section class="clean-block clean-hero" style="background-image:url(&quot;{% static 'assets/img/tech/image4.jpg' %}&quot;);color:rgba(9, 162, 255, 0.85);">
+            <div class="text">
+                <h2>Ez4Admin</h2>
+                <p>Sistema de ordem e serviços</p>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<body>
+    {% include 'partials/_menu.html' %}
+    <main class="page contact-us-page">
+        <section class="clean-block clean-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Adicionar Estoque</h2>
+                    <p></p>
+                </div>
+                <form action="{% url 'editar_produto_com_codigo' %}" method="post">
+                    {% csrf_token %}
+                    <input class="form-control" type="hidden" id="codigo" name="codigo" value="{{ produto.codigo }}">
+                    <div class="form-group"><label>Nome do produto</label><input class="form-control" type="text" id="nome" name="nome" value="{{ produto.nome }}"></div>
+                    <div class="form-group"><label>Tipo de Embalagem</label><input class="form-control" type="text" id="embalagem" name="embalagem" value="{{ produto.embalagem }}"></div>
+                    <div class="form-group"><label>Tamanho</label><input class="form-control" type="text" id="tamanho" name="tamanho" value="{{ produto.tamanho }}"></div>
+                    <div class="form-group"><label>Quantidade</label><input class="form-control" type="text" id="quantidade" name="quantidade" value="{{ produto.quantidade }}"></div>
+                    <div class="form-group"><label>Preço</label><input class="form-control" type="text" id="preco" name="preco" value="{{ produto.preco }}"></div>
+                    <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Send</button></div>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+
+{% endblock %}

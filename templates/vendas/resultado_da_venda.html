@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'partials/_menu.html' %}
+<div class="row">
+  <div class="col-9">.col-9</div>
+  <div class="col-4">.col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+  <div class="col-6"><br></div>
+</div>
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Caixa Aberto">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Página 2</title>
+    <link rel="stylesheet" href="{% static 'assets/css/nicepage.css' %}" media="screen">
+<link rel="stylesheet" href="{% static 'assets/css/pagetwo.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static 'assets/js/nicepage.js' %}" defer=""></script>
+    <meta name="generator" content="Nicepage 3.6.6, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+
+
+
+
+
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"url": "index.html"
+}</script>
+    <meta property="og:title" content="Página 2">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+  </head>
+  <body class="u-body">
+    <section class="u-clearfix u-palette-5-light-3 u-section-3" id="sec-150e">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <img src="{% static 'assets/img/logo_transparent.png' %}" alt="" class="u-image u-image-default u-preserve-proportions u-image-1" data-image-width="1200" data-image-height="1200">
+        <h3 class="u-align-center u-text u-text-1">Sub Total</h3>
+        <div class="u-border-2 u-border-grey-dark-1 u-container-style u-group u-radius-10 u-shape-round u-group-1">
+          <div class="u-container-layout u-container-layout-1"></div>
+        </div>
+        <h4 class="u-align-center u-text u-text-palette-5-dark-3 u-text-2">R$ {{ venda.valor_total }}</h4>
+        <h3 class="u-align-center u-text u-text-3">Troco</h3>
+        <h3 class="u-align-center u-text u-text-4">Total Recebido</h3>
+        <div class="u-border-2 u-border-grey-dark-1 u-radius-10 u-shape u-shape-round u-shape-1"></div>
+        <div class="u-border-2 u-border-grey-dark-1 u-radius-10 u-shape u-shape-round u-shape-2"></div>
+        <h4 class="u-align-center u-text u-text-palette-5-dark-3 u-text-5">R$ {{ venda.troco }}</h4>
+        <h4 class="u-align-center u-text u-text-palette-5-dark-3 u-text-6">R$ {{ venda.valor_pago }}</h4>
+      </div>
+    </section>
+    <section class="u-clearfix u-palette-5-light-3 u-section-4" id="sec-06e4">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <a href="{% url 'vendas' %}" class="u-active-none u-btn u-button-style u-hover-none u-none u-text-custom-color-2 u-text-hover-palette-2-base u-btn-1"><span class="u-icon u-text-palette-2-base"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 511.334 511.334" style="width: 1em; height: 1em;"><path d="m506.887 114.74c-3.979-5.097-10.086-8.076-16.553-8.076h-399.808l-5.943-66.207c-.972-10.827-10.046-19.123-20.916-19.123h-42.667c-11.598 0-21 9.402-21 21s9.402 21 21 21h23.468l23.018 256.439c.005.302-.01.599.007.903.047.806.152 1.594.286 2.37l.842 9.376c.016.177.034.354.055.529 2.552 22.11 13.851 41.267 30.19 54.21-8.466 10.812-13.532 24.407-13.532 39.172 0 35.106 28.561 63.667 63.666 63.667 35.106 0 63.667-28.561 63.667-63.667 0-7.605-1.345-14.9-3.801-21.667h114.936c-2.457 6.767-3.801 14.062-3.801 21.667 0 35.106 28.561 63.667 63.667 63.667s63.667-28.561 63.667-63.667-28.561-63.667-63.667-63.667h-234.526c-15.952 0-29.853-9.624-35.853-23.646l335.608-19.724c9.162-.538 16.914-6.966 19.141-15.87l42.67-170.67c1.567-6.272.158-12.918-3.821-18.016z"></path></svg><img></span>
+          <span style="font-weight: 700;">&nbsp;Finalizar comprar</span>
+        </a>
+        <a href="{% url 'deleta_venda' venda.id %}" class="u-active-none u-btn u-button-style u-hover-none u-none u-text-custom-color-2 u-text-hover-palette-2-base u-btn-2"><span class="u-icon u-text-palette-2-base"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 511.334 511.334" style="width: 1em; height: 1em;"><path d="m506.887 114.74c-3.979-5.097-10.086-8.076-16.553-8.076h-399.808l-5.943-66.207c-.972-10.827-10.046-19.123-20.916-19.123h-42.667c-11.598 0-21 9.402-21 21s9.402 21 21 21h23.468l23.018 256.439c.005.302-.01.599.007.903.047.806.152 1.594.286 2.37l.842 9.376c.016.177.034.354.055.529 2.552 22.11 13.851 41.267 30.19 54.21-8.466 10.812-13.532 24.407-13.532 39.172 0 35.106 28.561 63.667 63.666 63.667 35.106 0 63.667-28.561 63.667-63.667 0-7.605-1.345-14.9-3.801-21.667h114.936c-2.457 6.767-3.801 14.062-3.801 21.667 0 35.106 28.561 63.667 63.667 63.667s63.667-28.561 63.667-63.667-28.561-63.667-63.667-63.667h-234.526c-15.952 0-29.853-9.624-35.853-23.646l335.608-19.724c9.162-.538 16.914-6.966 19.141-15.87l42.67-170.67c1.567-6.272.158-12.918-3.821-18.016z"></path></svg><img></span><b>&nbsp;Cancelar</b>
+        </a>
+      </div>
+    </section>
+{% endblock %}

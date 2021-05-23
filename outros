@@ -1,0 +1,16 @@
+        ''' Verificando se todos os campos estão preenchidos '''
+
+        if campo_vazio(nome) or campo_vazio(endereco) or campo_vazio(telefone) or campo_vazio(dd) or \
+                campo_vazio(bairro) or campo_vazio(bairro) or campo_vazio(cidade) or \
+                campo_vazio(estado) or campo_vazio(cep):
+            messages.error(request, 'Você deixou de preencher um campo necessario')
+            return redirect('cria_cliente')
+
+
+        ''' Checando se tem algum campo em branco '''
+
+        if campo_vazio(c.nome) or campo_vazio(c.endereco) or campo_vazio(c.telefone) or campo_vazio(c.dd) or \
+                campo_vazio(c.bairro) or campo_vazio(c.bairro) or campo_vazio(c.cidade) or \
+                campo_vazio(c.estado) or campo_vazio(c.cep) or campo_vazio(c.data_de_nascimento):
+            messages.error(request, 'Você deixou de preencher um campo necessario')
+            return redirect('editar_cliente', cliente_id=c.id)

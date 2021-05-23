@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html>
+{% include 'partials/_menu.html' %}
+
+<body>
+    <main class="page pricing-table-page">
+        <section class="clean-block clean-pricing dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">Selecionar Clientes</h2>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
+                                <div class="container">
+                              <form action="{% url 'busca_cliente_venda' %}" class="form-inline" method="post">
+                                  {% csrf_token %}
+                                <input class="form-control mr-sm-2" type="search" name="buscar" placeholder="Procurar" aria-label="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Procurar</button>
+                              </form>
+                                    <a href = "{% url 'cria_cliente' %}"><button type="button" class="btn btn-primary btn-sm">Adicionar Cliente</button></a>
+                                </div>
+                            </nav>
+                            <p></p>
+                            {% include 'partials/_alertas.html' %}
+                            <table class="table table-striped">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Cliente</th>
+                                        <th>Telefone</th>
+                                        <th>Endereço</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   {% if clientes %}
+                                   {% for cliente in clientes %}
+                                    <tr>
+                                        <td>
+                                            <a href = "{% url 'cria_venda' cliente.id %}">{{ cliente.nome }}</a>
+                                        </td>
+                                        <td>+55 ({{ cliente.dd }}) {{ cliente.telefone }}</td>
+                                        <td>{{ cliente.endereco }}, {{ cliente.numero }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% else %}
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
+
+
+{% endblock %}
