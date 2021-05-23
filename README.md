@@ -1,8 +1,8 @@
 # Ez4Admin
  ![alt text](https://i.ibb.co/qNK65k9/sistema-ez4admin.png)
  
- Sistema para gestão de estoque
- Vendas (Caixa)
+ Sistema para gestão de estoque,
+ Vendas (Caixa),
  Cadastro de Clientes
  
 Back-End:
